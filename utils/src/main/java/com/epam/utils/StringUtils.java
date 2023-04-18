@@ -5,7 +5,12 @@ public class StringUtils {
         boolean isPositive = false;
         if(str != null) {
             if (!str.isEmpty()) {
-                isPositive = Double.parseDouble(str) > 0;
+                try {
+                    isPositive = Double.parseDouble(str) > 0;
+                }
+                catch (NumberFormatException e) {
+                    return false;
+                }
             }
         }
         return isPositive;
