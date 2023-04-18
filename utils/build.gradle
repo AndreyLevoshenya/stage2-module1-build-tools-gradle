@@ -1,33 +1,37 @@
 plugins {
-    // id for library
-    // id for maven to publish jar to local repository
+    id 'java'    // id for library
+    id 'maven-publish'    // id for maven to publish jar to local repository
 }
 
 java {
-// provide sourceCompatibility
+    sourceCompatibility = '1.8' // provide sourceCompatibility
 }
 
 repositories {
-// provide repository, where required dependencies are located
+    mavenCentral() // provide repository, where required dependencies are located
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-// provide groupId
-// provide artifactId
-// provide version
+            group = 'com.epam' // provide groupId
+            artifactId = 'stage2-module1-build-tools-gradle' // provide artifactId
+            version = '1.0' // provide version
 
             from components.java
         }
     }
 }
 
-//add Apache Apache Commons Lang 3.10 (or higher) dependency
+dependencies {
+    implementation 'org.apache.commons:commons-lang3:3.12.0' //add Apache Apache Commons Lang 3.10 (or higher) dependency
+}
 
 jar {
     manifest {
-        //provide manifest with such attributes as 'Implementation-Title', 'Implementation-Version'
+        attributes('Implementation-Title':   'stage2-module1-build-tools-gradle',
+                'Implementation-Version': '1.0')
+                //provide manifest with such attributes as 'Implementation-Title', 'Implementation-Version'
     }
 }
 
