@@ -1,18 +1,8 @@
 package com.epam.utils;
 
+import org.apache.commons.lang3.math.NumberUtils;
 public class StringUtils {
     public static boolean isPositiveNumber(final String str) {
-        boolean isPositive = false;
-        if(str != null) {
-            if (!str.isEmpty()) {
-                try {
-                    isPositive = Double.parseDouble(str) > 0;
-                }
-                catch (NumberFormatException e) {
-                    return false;
-                }
-            }
-        }
-        return isPositive;
+        return NumberUtils.isCreatable(str) && NumberUtils.toDouble(str) > 0;
     }
 }
